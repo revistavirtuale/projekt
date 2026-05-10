@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PROJEKT - Reviste Virtuale</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #000;
+      color: #ddd;
+    }
+
+    header {
+      background: #111;
+      color: #87CEEB;
+      text-align: center;
+      padding: 2rem 1rem;
+      border-bottom: 2px solid #444;
+    }
+
+    header h1 { margin: 0; font-size: 2.5rem; color: #87CEEB; }
+    header p { font-size: 1.2rem; margin-top: 0.5rem; color: #f5e79e; }
+
+    nav ul {
+      list-style: none;
+      padding: 0;
+      margin-top: 1rem;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    nav ul li { margin: 0.5rem; }
+    nav ul li a {
+      text-decoration: none;
+      color: #ddd;
+      background: #222;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      transition: background 0.3s, color 0.3s;
+    }
+    nav ul li a:hover { background: #444; color: #fff; }
+
+    .section {
+      padding: 2rem;
+      text-align: center;
+      background: #111;
+      margin: 1rem auto;
+      max-width: 900px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(255,255,255,0.1);
+    }
+    .section h2 { color: #87CEEB; }
+    .section p { color: #ccc; }
+    .section img {
+      max-width: 100%;
+      height: auto;
+      margin: 1rem 0;
+      border-radius: 8px;
+      box-shadow: 0 0 20px rgba(255,255,255,0.2);
+    }
+
+    .teknologjia-img {
+      float: right;
+      margin: 0 0 15px 25px;
+      width: 250px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(255,255,255,0.2);
+    }
+
+    .left-box, .right-box {
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+      background: rgba(0,0,0,0.6);
+      padding: 20px;
+      border-radius: 10px;
+    }
+    .left-box img { width: 200px; border-radius: 8px; box-shadow: 0 0 10px rgba(255,255,255,0.2); }
+    .left-box .text { flex: 1; color: #ddd; text-align: left; }
+    .right-box img { width: 400px; border-radius: 8px; box-shadow: 0 0 10px rgba(255,255,255,0.2); }
+    .right-box .text { flex: 1; color: #ddd; text-align: left; }
+
+    .split-box {
+      display: flex;
+      gap: 20px;
+      background: rgba(0,0,0,0.6);
+      padding: 20px;
+      border-radius: 10px;
+    }
+    .quote-box {
+      flex: 1;
+      font-size: 1.4rem;
+      font-weight: bold;
+      color: #f5e79e;
+      text-align: center;
+      padding: 1rem;
+      background: rgba(255,255,255,0.05);
+      border-left: 5px solid #87CEEB;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(255,255,255,0.2);
+    }
+    .poetry-box {
+      flex: 1;
+      color: #ddd;
+      text-align: center;
+      padding: 1rem;
+      background: rgba(255,255,255,0.05);
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(255,255,255,0.2);
+    }
+.audio-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;       /* vendos në qendër horizontalisht */
+  justify-content: center;   /* vendos në qendër vertikalisht */
+  background: rgba(135, 206, 235, 0.1); /* një sfond blu i lehtë transparent */
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(135, 206, 235, 0.6); /* efekt ndriçimi */
+}
+
+.audio-box h2 {
+  color: #87CEEB;
+  margin-bottom: 15px;
+}
+
+.audio-box audio {
+  width: 80%;                /* lojtar audio më i gjerë */
+  border-radius: 8px;
+  background-color: #111;    /* sfond i errët për lojtarin */
+  box-shadow: 0 0 15px rgba(255,255,255,0.3);
+}
+
+    @media (max-width: 600px) { .split-box { flex-direction: column; } }
+
+    .lexuesit-section { position: relative; }
+   .lexuesit-img {
+  float: left;              /* ose right nëse do foto djathtas */
+  margin: 10px 20px 10px 0; /* hapësirë sipër, djathtas, poshtë */
+  width: 200px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(255,255,255,0.2);
+}
+
+    blockquote {
+      font-size: 1.2rem;
+      font-style: italic;
+      color: #f5e79e;
+      background: rgba(255,255,255,0.05);
+      padding: 1rem;
+      margin: 1rem auto;
+      border-left: 5px solid #87CEEB;
+      border-radius: 8px;
+      box-shadow: 0 0 15px rgba(255,255,255,0.3);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    blockquote:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 25px rgba(255,255,255,0.6);
+      background: rgba(255,255,255,0.1);
+    }
+
+    footer {
+      background: #111;
+      color: #f5e79e;
+      text-align: center;
+      padding: 1rem;
+      margin-top: 2rem;
+      border-top: 2px solid #444;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <h1>Libri ne epoken digjitale</h1>
+    <p>Sikur te isha djale</p>
+    <nav>
+      <ul>
+        <li><a href="#artikulli">Zëri që sfidon kohën</a></li>
+        <li><a href="#teknologjia">Libri & Teknologjia</a></li>
+        <li><a href="#intervista">Intervistë</a></li>
+        <li><a href="#lexuesit">Këndi i Lexuesit</a></li>
+        <li><a href="#kreativ">Këndi Kreativ</a></li>
+        <li><a href="#shprehjet">Fjalë që ndriçojnë</a></li>
+      </ul>
+    </nav>
+  </header>
+  <!-- Artikulli Kryesor -->
+  <section id="artikulli" class="section">
+    <div class="left-box">
+      <img src="emancipim.jpg" alt="Një zë që sfidon kohën">
+      <div class="text">
+        <h2>Një zë që sfidon kohën</h2>
+        <h3>Emancipimi i gruas dhe Teknologjia</h3>
+        <p>Romani “Sikur të isha djalë” i Haki Stërmillit është një dëshmi e fuqishme e betejës për emancipimin e gruas shqiptare. Personazhi kryesore, Dija, guxon të thyejë heshtjen dhe të kërkojë liri në një shoqëri ku zëri i saj shpesh mbetej i mbytur. Ky mesazh i guximshëm, i shkruar dekada më parë, mbetet aktual edhe sot: emancipimi i gruas është një proces i vazhdueshëm që kërkon kurajo dhe vizion.</p>
+
+<p>Në kohën moderne, emancipimi nuk lidhet vetëm me fjalën e shkruar, por edhe me fuqinë e teknologjisë. Interneti, librat elektronikë, platformat digjitale dhe rrjetet sociale u japin grave mundësinë të shprehen lirshëm, të ndajnë ide dhe të ndërtojnë komunitete pa kufij. Teknologjia është bërë një mjet i ri emancipimi, duke e bërë zërin e gruas më të fortë dhe më të dëgjuar.</p>
+
+<p>Ky artikull është zemra e revistës: një urë mes së shkuarës dhe së tashmes, ku emancipimi i gruas dhe teknologjia bashkohen për të treguar se fjala e lirë e gruas nuk shuhet, por vetëm gjen forma të reja për të ndriçuar botën.</p>
+  
+      </div>
+    </div>
+  </section>
+
+  <!-- Libri dhe Teknologjia -->
+  <section id="teknologjia" class="section">
+    <h2>Libri dhe Teknologjia</h2>
+     <img src="librivstel.jpg" alt="Foto Teknologjia" class="teknologjia-img">
+        <p>Nga fjala e shtypur te ekrani digjital  
+Leximi ka qenë gjithmonë një dritë që ndriçon mendjen. Dikur, libri i shtypur ishte i vetmi burim dijeje: aroma e letrës, faqet që kthehen me dorë, shënimet në margjina – të gjitha krijojnë një lidhje intime mes lexuesit dhe veprës. “Libri është një mik që nuk tradhton kurrë”, thoshin klasikët, duke nënvizuar besnikërinë e fjalës së shkruar.</p>
+
+<p>Por sot, në epokën e teknologjisë, libri ka marrë forma të reja. Libri virtual ofron akses të menjëhershëm: një klikim mjafton për të hapur mijëra tituj, për t’i mbajtur në xhep, për t’i dëgjuar si audiolibër gjatë udhëtimit. Leximi digjital sjell prakticitet, kursim kohe dhe mundësi për të ndarë mendime në rrjete sociale. “Një ekran i vogël mund të mbajë një bibliotekë të tërë” – kjo është shprehja që përmbledh revolucionin e leximit modern.</p>
+
+<p>Megjithatë, libri tradicional ruan magjinë e tij: prekja e faqes, ndjesia e kohës që kalon bashkë me kapitujt, dhe siguria se fjala e shtypur mbetet e pandryshueshme. Në kontrast, libri virtual është i përditësuar, i gjallë, i lidhur me botën digjitale.</p>
+
+<p>Në fund, nuk është një garë mes letrës dhe ekranit, por një bashkëjetesë. Njëra formë na kujton rrënjët, tjetra na hap horizonte të reja. Revista jonë virtuale është pikërisht ura mes këtyre dy botëve: tradita e librit dhe fuqia e teknologjisë.</p>
+ 
+  </section>
+<!-- Intervistë Imagjinare -->
+<!-- Intervistë Imagjinare -->
+<section id="intervista" class="section">
+  <div class="audio-box">
+    <h2>Intervistë për emancipimin e gruas</h2>
+    <audio controls>
+      <source src="audiointervist.mp3" type="audio/mpeg">
+      Shfletuesi juaj nuk e mbështet elementin audio.
+    </audio>
+  </div>
+</section>
+
+
+
+  <!-- Kënd i Lexuesit -->
+  <section id="lexuesit" class="section lexuesit-section">
+    <h2>Këndi i Lexuesit</h2>
+    <ul type="square">
+<li><p>“Ky libër më bëri të kuptoj se gruaja është e fortë dhe e pamposhtur. Personazhi i Dijes më duket si një shembull i guximit, sepse ajo nuk dorëzohet edhe kur jeta i sjell vështirësi. Si lexues, ndjej se mesazhi i romanit është që gratë kanë forcë të brendshme për të përballuar çdo sfidë.”</p>
+ </li>
+<li><p>"Ky libër më ka bërë shumë përshtypje, sepse tregon qartë padrejtësitë që kanë përjetuar vajzat në të kaluarën. Gjatë leximit, ndjeva keqardhje për Dijen, por edhe admirim për forcën dhe dëshirën e saj për liri dhe arsim.
+Sipas mendimit tim, mesazhi i librit është shumë i rëndësishëm: çdo njeri duhet të ketë të drejta të barabarta dhe mundësinë për të ndjekur ëndrrat e veta. Ky roman më bëri të reflektoj dhe të vlerësoj më shumë lirinë që kemi sot."</p></li>
+<li><p>“Kur lexova këtë libër, ndjeva se Dija është një shembull i guximit dhe vendosmërisë. Ajo nuk pranon të heshtë dhe më bëri të kuptoj se gratë kanë forcë për të ndryshuar shoqërinë. Si nxënës, më duket sikur ky roman më mëson të jem më i fortë dhe të mos dorëzohem përballë padrejtësive.”</p></li>
+</ul> 
+</section>
+
+  <!-- Kënd Kreativ -->
+  <section id="kreativ" class="section">
+    
+    <div class="split-box">
+      <!-- Quote Box -->
+      <div class="quote-box">
+        “Duhet të luftojmë në daçim të rrojmë si njerëz”- Dija
+        <img src="qiri4.jpg" alt="Qirinj simbolikë">
+</div>
+
+      <!-- Poezia -->
+      <div class="poetry-box">
+       <h3>Kendi Kreativ</h3>
+ <pre text-align= "center">
+Në errësirën e kohës së vjetër,
+një zë i brishtë guxoi të thyejë heshtjen.
+Dija, si flakë qiriri,
+ndriçoi shpresën e grave të mbyllura.
+
+Në çdo fjalë të saj ka një thirrje,
+një ëndërr për liri, një hap drejt dritës.
+Teknologjia i jep krahë asaj flake,
+duke e shpërndarë në botë pa kufij.
+
+Emancipimi nuk është vetëm kujtim,
+është udhëtim që vazhdon,
+një këngë e pashuar,
+një zë që kohën sfidon.
+        </pre>
+      </div>
+    
+    </div>
+  </section>
+
+  <!-- Multimedia -->
+  <section id="shprehjet" class="section">
+  <h2>Fjalë që ndriçojnë</h2>
+  <blockquote>
+    “Gruaja është gjysma e shoqërisë dhe pa të nuk ka përparim.” – Musine Kokalari
+  </blockquote>
+  <blockquote>
+    “Emancipimi i gruas është emancipim i gjithë kombit.” – Sevasti Qiriazi
+  </blockquote>
+  <blockquote>
+    “Arsimi është arma më e fortë për lirinë e gruas.” – Parashqevi Qiriazi
+  </blockquote>
+</section>
+
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2026 Revista Virtuale - Projekt: Gjuhë Shqipe dhe Letersi</p>
+  </footer>
+
+</body>
+</html>
